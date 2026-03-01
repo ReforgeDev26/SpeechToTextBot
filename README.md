@@ -18,7 +18,7 @@
 
 1. Клонируйте репозиторий:
 ```bash
-git clone https://github.com/looapz/telegram-photo-metadata-bot.git
+git clone https://github.com/ReforgeDev26/SpeechToTextBot.git
 cd telegram-photo-metadata-bot
 ```
 
@@ -34,17 +34,17 @@ pip install -r requirements.txt
 
 **Linux/macOS:**
 ```bash
-export TELEGRAM_BOT_TOKEN="ваш_токен_бота"
+export BOT_TOKEN="ваш_токен_бота"
 ```
 
 **Windows (PowerShell):**
 ```powershell
-$env:TELEGRAM_BOT_TOKEN="ваш_токен_бота"
+$env:BOT_TOKEN="ваш_токен_бота"
 ```
 
 **Windows (CMD):**
 ```cmd
-set TELEGRAM_BOT_TOKEN=ваш_токен_бота
+set BOT_TOKEN=ваш_токен_бота
 ```
 ## Установка FFmpeg
 
@@ -137,5 +137,6 @@ sudo systemctl start SpeechToTextBot
 ```
 
 ## Лицензия
+
 
 MIT
