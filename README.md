@@ -19,7 +19,7 @@
 1. Клонируйте репозиторий:
 ```bash
 git clone https://github.com/ReforgeDev26/SpeechToTextBot.git
-cd telegram-photo-metadata-bot
+cd SpeechToTextBot
 ```
 
 2. Установите зависимости:
@@ -140,3 +140,4 @@ sudo systemctl start SpeechToTextBot
 
 
 MIT
+
