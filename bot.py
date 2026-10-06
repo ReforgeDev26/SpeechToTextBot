@@ -2,13 +2,22 @@ import os
 from aiogram import Bot, Dispatcher, types, F
 from aiogram.filters import Command
 from aiogram.types import Message
+from aiogram.client.session.aiohttp import AiohttpSession
+from aiogram.client.default import DefaultBotProperties
 import logging
 import speech_recognition as sr
 from dotenv import load_dotenv
 import tempfile
 import subprocess
 import logging
+import ssl
 from ffmpeg_finder import find_ffmpeg
+
+
+# Контекст и отключение проверки для прокси
+ssl_context = ssl.create_default_context()
+ssl_context.check_hostname = False
+ssl_context.verify_mode = ssl.CERT_NONE
 
 
 # Загружаем переменные из файла .env
@@ -22,7 +31,19 @@ TOKEN = os.getenv("BOT_TOKEN")
 if not TOKEN:
     raise ValueError("BOT_TOKEN не найден в .env файле!")
 
-bot = Bot(token=TOKEN)
+PROXY_URL = os.getenv("PROXY_URL")
+if not PROXY_URL	:
+    raise ValueError("PROXY_URL не найден в .env файле!")
+
+session = AiohttpSession(proxy=PROXY_URL) #добавление socks5 сессии
+session._connector_init['ssl'] = ssl_context
+
+bot = Bot(
+	token=TOKEN,
+	session=session,
+	default=DefaultBotProperties(parse_mode="HTML")
+)
+
 dp = Dispatcher()
 recognizer = sr.Recognizer()  # Создаем экземпляр класса
 

@@ -6,12 +6,14 @@
 
 - Извлечение текста
 - Поддержка пересылаемых голосовых
+- Поддерживает возможность добавить прокси для хостинга в условиях блокировки Telegram
 
 ## Требования
 
 - Python 3.7+
 - Библиотеки из файла requirements.txt
 - Токен Telegram бота (получается через @BotFather)
+- Proxy URL для взаимодействия с серверами Telegram (Default:"socks5://127.0.0.1:10808")
 - Установленный ffmpeg
 
 ## Установка
@@ -35,16 +37,19 @@ pip install -r requirements.txt
 **Linux/macOS:**
 ```bash
 export BOT_TOKEN="ваш_токен_бота"
+export URL_PROXY="ваш_proxy_url"
 ```
 
 **Windows (PowerShell):**
 ```powershell
 $env:BOT_TOKEN="ваш_токен_бота"
+$env:URL_PROXY="ваш_proxy_url"
 ```
 
 **Windows (CMD):**
 ```cmd
 set BOT_TOKEN=ваш_токен_бота
+set URL_PROXY="ваш_proxy_url"
 ```
 ## Установка FFmpeg
 
@@ -122,6 +127,7 @@ After=network.target
 User=ваш_пользователь
 WorkingDirectory=/путь/к/боту
 Environment="BOT_TOKEN=ваш_токен_бота"
+Environment="PROXY_URL=ваш_proxy_url"
 ExecStart=/путь/к/python /путь/к/боту/bot.py
 Restart=always
 
@@ -140,4 +146,3 @@ sudo systemctl start SpeechToTextBot
 
 
 MIT
-
